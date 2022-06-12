@@ -41,7 +41,7 @@ public class Main {
                 }
             }
             try {
-                second = Integer.valueOf(numbers[1]);
+                second = Integer.valueOf(numbers[0]);
             }catch (NumberFormatException e){
                 numeric++;
                 try {
@@ -81,12 +81,40 @@ public class Main {
                     throw new IllegalStateException("Unexpected value: " + operation);
             }
             //System.out.println(answer);
-            if(numeric==2&&answer<1){
-                System.out.println("Результат вычисления римских цифр должен быть натуральным числом");
-                System.exit(105);
-            }
+            if(numeric==2){
+                if(answer<1) {
+                    System.out.println("Результат вычисления римских цифр должен быть натуральным числом");
+                    System.exit(106);
+                }
+                //ZDES
+                int rimX=0;
+                int rimV=0;
+                System.out.println(answer);
+                if((answer%10)<answer){
+                    rimX=answer/10;
+                    answer=answer%10;
+                    while(rimX!=0){
+                        rimX--;
+                        System.out.print("X");
+                    }
+                }
+                if((answer%5)<answer){
+                    rimV=answer/5;
+                    answer=answer%5;
+                    while(rimV!=0){
+                        rimV--;
+                        System.out.print("V");
+                    }
+                }
+                while(answer!=0){
+                    answer--;
+                    System.out.print("I");
+                }
 
-            System.out.println(answer);
+
+            }else {
+                System.out.println(answer);
+            }
 
 
 
@@ -127,62 +155,32 @@ public class Main {
     public static int toint(String number) throws IOException {
         int ret;
             switch (number){
-                case "1":
-                    ret = 1;
-                    break;
                 case "I":
                     ret = 1;
-                    break;
-                case "2":
-                    ret = 2;
                     break;
                 case "II":
                     ret =  2;
                     break;
-                case "3":
-                    ret = 3;
-                    break;
                 case "III":
                     ret = 3;
-                    break;
-                case "4":
-                    ret = 4;
                     break;
                 case "IV":
                     ret = 4;
                     break;
-                case "5":
-                    ret = 5;
-                    break;
                 case "V":
                     ret = 5;
-                    break;
-                case "6":
-                    ret = 6;
                     break;
                 case "VI":
                     ret = 6;
                     break;
-                case "7":
-                    ret = 7;
-                    break;
                 case "VII":
                     ret = 7;
-                    break;
-                case "8":
-                    ret = 8;
                     break;
                 case "VIII":
                     ret = 8;
                     break;
-                case "9":
-                    ret = 9;
-                    break;
                 case "IX":
                     ret = 9;
-                    break;
-                case "10":
-                    ret = 10;
                     break;
                 case "X":
                     ret = 10;
@@ -192,6 +190,8 @@ public class Main {
             }
             return ret;
         }
+
+
     }
 
 
